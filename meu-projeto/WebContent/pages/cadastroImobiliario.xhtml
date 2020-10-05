@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+        <h3 style="color: #365e7d">
+            Listagem de Cadastros Imobiliário
+        </h3>
+        <h:form id="form-cadastroImobiliario">
+            <div style="width: 80%;" align="center">
+                <p:commandButton value="Cadastrar" icon="pi pi-plus"
+                                 style="float:left"
+                                 onclick="PF('dlgCadastroImobiliario').show()"/>
+                <p:dataTable widgetVar="tabela-cadastroImobiliario"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                             var="cadastroImobiliario" value="#{cadastroImobiliarioMB.listaCadastrosImobiliario}"
+                             emptyMessage="Nenhum registro encontrado">
+                    <f:facet name="header">
+                        <p:outputPanel>
+                            <p:inputText id="globalFilter" onkeyup="PF('tabela-cadastroImobiliario').filter()"
+                                         style="width:100%" placeholder="Buscar"/>
+                        </p:outputPanel>
+                    </f:facet>
+                    <p:column headerText="Descrição" sortBy="#{cadastroImobiliario.cep}">
+                        <p:outputLabel value="#{cadastroImobiliario.cep}"/>
+                    </p:column>
+                    <p:column headerText="Endereço" sortBy="#{cadastroImobiliario.endereco}">
+                        <p:outputLabel
+                                value="#{cadastroImobiliario.tipoLogradouro.descricao} #{cadastroImobiliario.endereco} #{cadastroImobiliario.bairro}, #{cadastroImobiliario.complemento}"/>
+                    </p:column>
+                    <p:column headerText="Estado" sortBy="#{cadastroImobiliario.unidadeFederativa.nome}">
+                        <p:outputLabel value="#{cadastroImobiliario.unidadeFederativa.nome}"/>
+                    </p:column>
+                    <p:column headerText="Cidade" sortBy="#{cadastroImobiliario.cidade}">
+                        <p:outputLabel value="#{cadastroImobiliario.cidade}"/>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <div align="center">
+                            <p:commandButton
+                                    action="#{cadastroImobiliarioMB.abrirEditarCadastroImobiliario(cadastroImobiliario)}"
+                                    update="form-cadastroImobiliario, formDlgCadastroImobiliario" icon="pi pi-pencil"
+                                    onclick="PF('dlgCadastroImobiliario').show()" title="Editar"
+                                    style="font-size: 150%;"/>
+
+                            <p:commandButton
+                                    action="#{cadastroImobiliarioMB.deletarCadastroImobiliario(cadastroImobiliario)}"
+                                    update="form-cadastroImobiliario" icon="pi pi-trash" title="Excluir"
+                                    style="font-size: 150%;"/>
+                        </div>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

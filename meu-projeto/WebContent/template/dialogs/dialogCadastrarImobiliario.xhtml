@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+
+<p:dialog dynamic="true" header="CadastroImobiliario" widgetVar="dlgCadastroImobiliario" responsive="true"
+          closable="true" resizable="false" width="600px" modal="true">
+    <h:form id="formDlgCadastroImobiliario">
+        <b:alert severity="danger" rendered="#{cadastroImobiliarioMB.mensagemDeErroCadastrar ne null}">
+            <strong>Alerta! </strong>
+            <p:outputLabel value="#{cadastroImobiliarioMB.mensagemDeErroCadastrar}"/>
+        </b:alert>
+        <p:growl id="msgDlgCadastroImobiliario"/>
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <p:outputLabel value="Cep:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.cep}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Tipo Logradouro:" style="float:left !important; text-align: left !important;"/>
+                <p:selectOneMenu style="float:left !important; text-align: left !important; width: 100%;"
+                                 value="#{cadastroImobiliarioMB.cadastroImobiliario.tipoLogradouro.id}">
+                    <f:selectItem itemLabel="Tipo Logradouro" noSelectionOption="true"/>
+                    <f:selectItems value="#{cadastroImobiliarioMB.listaTipoLogradouro}" var="tipoLogradouro"
+                                   itemValue="#{tipoLogradouro.id}" itemLabel="#{tipoLogradouro.descricao}"/>
+                </p:selectOneMenu>
+            </div>
+            <div class="ui-g-12">
+                <p:outputLabel value="Endereço:" style="float:left !important; text-align: left !important;"/>
+                <p:inputTextarea value="#{cadastroImobiliarioMB.cadastroImobiliario.endereco}" rows="3" cols="15"
+                                 style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-12">
+                <p:outputLabel value="Complemento:" style="float:left !important; text-align: left !important;"/>
+                <p:inputTextarea value="#{cadastroImobiliarioMB.cadastroImobiliario.complemento}" rows="3" cols="15"
+                                 style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Numero:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.numero}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Bairro:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.bairro}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Unidade Federativa:" style="float:left !important; text-align: left !important;"/>
+                <p:selectOneMenu style="float:left !important; text-align: left !important; width: 100%;"
+                                 value="#{cadastroImobiliarioMB.cadastroImobiliario.unidadeFederativa.id}">
+                    <f:selectItem itemLabel="Unidade Federativa" noSelectionOption="true"/>
+                    <f:selectItems value="#{cadastroImobiliarioMB.listaUnidadeFederativas}" var="uf"
+                                   itemValue="#{uf.id}" itemLabel="#{uf.nome}"/>
+                </p:selectOneMenu>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Cidade:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.cidade}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-12">
+                <b:commandButton value="Cadastrar" look="success" update="formDlgCadastroImobiliario, form-cadastroImobiliario" oncomplete=""
+                                 actionListener="#{cadastroImobiliarioMB.salvarCadastroImobiliario()}" style="width: 100%;"/>
+            </div>
+        </div>
+    </h:form>
+</p:dialog>
+</html>

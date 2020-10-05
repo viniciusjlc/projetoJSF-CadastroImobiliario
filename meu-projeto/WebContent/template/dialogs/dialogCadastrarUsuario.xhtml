@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xml:lang="en" lang="en">
+
+<p:dialog dynamic="true" header="Cadastrar Usuario" widgetVar="dlgCadastrarUsuario" responsive="true"
+          closable="true" resizable="false" width="600px" modal="true">
+    <h:form id="formDlgCadastrarUsuario">
+        <b:alert severity="danger" rendered="#{usuarioMB.mensagemErroCadastro ne null}">
+            <strong>Alerta! </strong>
+            <p:outputLabel value="#{usuarioMB.mensagemErroCadastro}"/>
+        </b:alert>
+        <p:growl id="msgDlgCadastrarUsuario"/>
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p:outputLabel value="Nome:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{usuarioMB.usuarioCadastro.nome}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-12">
+                <p:outputLabel value="Email:" style="float:left !important; text-align: left !important;"/>
+                <p:inputText value="#{usuarioMB.usuarioCadastro.email}"
+                             style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Senha:" style="float:left !important; text-align: left !important;"/>
+                <p:password value="#{usuarioMB.usuarioCadastro.senha}"
+                            style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-6">
+                <p:outputLabel value="Confirmação da Senha:"
+                               style="float:left !important; text-align: left !important;"/>
+                <p:password value="#{usuarioMB.confirmacaoSenha}"
+                            style="float:left !important; text-align: left !important; width: 100%;"/>
+            </div>
+            <div class="ui-g-12">
+                <b:commandButton value="Cadastrar" look="success" update="formDlgCadastrarUsuario, formNavBar"
+                                 actionListener="#{usuarioMB.cadastrar()}" style="width: 100%;"/>
+            </div>
+        </div>
+    </h:form>
+</p:dialog>
+</html>

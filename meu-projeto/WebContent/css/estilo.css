@@ -1,0 +1,926 @@
+@CHARSET "UTF-8";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: white;
+    font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.semBorda tr, semBorda row, .semBorda td {
+    border: none !important;
+}
+
+#avisos {
+    padding: 4px;
+}
+
+.aviso {
+    text-align: center;
+    padding-top: 9px;
+    height: 40px;
+    width: 500px;
+}
+
+#header {
+    background: #004A77 !important;
+    height: auto;
+    margin-top: -50px;
+    width: 100%;
+}
+
+.header-div {
+    width: 100%;
+    padding-bottom: 1px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.headerText {
+    color: white;
+    font: bold 12px 'Trebuchet MS', 'Tahoma', 'Arial', 'Verdana';
+    text-align: left;
+    margin-top: -50px;
+    float: right;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+.textBottom {
+    margin-top: -35px;
+}
+
+.logo {
+    float: left;
+    width: 55px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 12px;
+}
+
+.logo-titulo {
+    color: white;
+    font-family: arial;
+    font-size: 13px;
+    margin-left: 65px;
+    text-align: left;
+    top: 100px;
+    margin-top: -14px;
+    padding-top: 10px;
+    max-width: 220px;
+}
+
+.logo-subtitulo {
+    color: white;
+    font-family: arial;
+    font-size: 13px;
+    margin-left: 65px;
+    text-align: left;
+    top: 100px;
+    margin-top: -14px;
+    max-width: 220px;
+}
+
+.logo-text-subtitulo {
+    color: white;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 19px;
+    margin-left: 65px;
+    text-align: left;
+    top: 100px;
+    margin-top: -12px;
+}
+
+.logo-text-segundo-subtitulo {
+    color: white;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 19px;
+    margin-left: 65px;
+    text-align: left;
+    top: 100px;
+    margin-top: -18px;
+}
+
+#container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 90px;
+    height: auto;
+    display: block;
+}
+
+#title-user {
+    background: #004A77;
+    width: 100%;
+    height: 30px;
+    font-size: 62.5%;
+}
+
+#title-user td {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.detalhe-proces {
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+#foot {
+    bottom: 0;
+    width: 100%;
+    background: #004A77 !important;
+    position: fixed;
+}
+
+#foot p {
+    color: white;
+    font: 11px/30px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding-right: 10px;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+#foot .connect {
+    float: left;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 6px 0;
+}
+
+#foot .connect a {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 6px;
+}
+
+#foot .connect a.facebook {
+    background-position: 0 -112px;
+}
+
+#foot .connect a.twitter {
+    background-position: 0 -140px;
+}
+
+.proces-colum {
+    column-count: 2;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.proces {
+    text-align: left;
+    width: auto;
+}
+
+.proces td {
+    padding: 0 6px;
+}
+
+.badge-receber {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #FF4500;
+    border-radius: 10px
+}
+
+.badge-tramitar {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #00EE00;
+    border-radius: 10px
+}
+
+.ui-datatable table {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.ui-datatable .ui-datatable-header, .ui-datatable .ui-datatable-footer {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.ui-datatable .ui-datatable-header {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.ui-datatable th, .ui-datatable tfoot td {
+    color: #333333 !important;
+    font-family: 'Trebuchet MS' !important;
+    font-style: italic !important;
+    font-size: 12px !important;
+    line-height: normal !important;
+    line-height: 15px !important;
+}
+
+.ui-datatable .ui-datatable-data td, .ui-datatable .ui-datatable-data-empty td {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+/*#menulateral {
+	margin: 0 auto;
+	margin-top: 18px;
+	margin-width: 195px;
+	height: 530px;
+	margin-left: 1px;
+	float: left;
+	width: 195px;
+	height: 530px;
+	float: left;
+	border-bottom: skyblue 1px solid;
+	border-left: skyblue;
+}*/
+
+#cabecalho {
+    padding: 5px;
+    margin-bottom: 5px;
+    height: 55px;
+    border: 1px solid #CCCCCC;
+}
+
+#cabecalho-logo {
+    padding: 5px;
+    margin-bottom: 5px;
+    height: 65px;
+    width: 88px;
+    background-position: left;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#cabecalho-texto {
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-position: left;
+    background-repeat: no-repeat;
+    width: 500px;
+    /*width: 488px;*/
+    float: left;
+}
+
+#contMenuBar {
+    background-color: #FFFFFF;
+/ / height: auto;
+/ / padding: 0;
+    /*border: 1px solid;
+     /* width: 755px; */
+/ / position: absolute;
+}
+
+#contMain {
+    background-color: #FFFFFF;
+    border: 1px solid;
+    padding: 5px;
+    height: auto;
+    width: 930px;
+    position: absolute;
+    text-align: left;
+}
+
+#contMainImg {
+    background-color: #FFFFFF;
+    height: auto;
+    width: auto;
+    padding-top: 220px;
+    border-color: #000000;
+    clear: both;
+}
+
+#rodape {
+    padding: 5px;
+    margin-top: 5px;
+    height: 38px;
+    border: 1px solid #CCCCCC;
+    background-color: #003B6F;
+    background-repeat: no-repeat;
+    background-position: center;
+    clear: both;
+    width: 970px;
+}
+
+#legenda {
+    /*width: 40px;
+         height: 100px;*/
+    margin-top: 5px;
+}
+
+#listaUsuarios {
+    margin: 0;
+    padding: 0;
+}
+
+ui-widget {
+    font-size: 12px;
+    font-family: arial
+}
+
+/*------------DEFINIÃ¯Â¿Â½Ã¯Â¿Â½O DE FONTES-----------------------*/
+.textoGoverno {
+    color: #E4E4E4;
+    font: bold 12px 'Trebuchet MS', 'Tahoma', 'Arial', 'Verdana';
+    text-align: left;
+    margin-top: 3px;
+}
+
+.textoSistema {
+    color: #E4E4E4;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    text-align: left;
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+
+.menu {
+    color: #F0FFFF;
+    background-color: #F0FFFF;
+    background: #F0FFFF;
+    border-radius: 0 0 0 0;
+}
+
+.edit {
+    border: 1 pxt;
+    background-color: #FFFFFF;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    color: #333333;
+}
+
+.edit:focus {
+    background-color: #fafae6;
+}
+
+.combo {
+    background-color: #FFFFFF;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    color: #333333;
+    border-top: none !important;
+}
+
+.combo:focus {
+    background-color: #fafae6;
+}
+
+.rotulos {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    line-height: normal;
+}
+
+.rotulosBold {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+    line-height: 12px;
+}
+
+.legend {
+    color: #666666;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.legendBold {
+    color: #666666;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    font-weight: bold;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.fonteForm {
+    color: #333333;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+.fonteGreen {
+    color: #006400;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    font-weight: bolder;
+    line-height: 10px;
+}
+
+.fonteRed {
+    color: #FF0000;
+    font-family: 'Trebuchet MS';
+    font-size: 10px;
+    line-height: normal;
+    font-weight: bolder;
+    line-height: 10px;
+}
+
+.textoAviso {
+    color: #666666;
+    font: 14px 'Trebuchet MS', 'Tahoma', 'Arial', 'Verdana';
+    font-weight: bold;
+}
+
+.textoAviso2 {
+    font: 16px 'Trebuchet MS', 'Tahoma', 'Arial', 'Verdana';
+    font-weight: bold;
+    margin-top: -0px;
+}
+
+.legendBlue {
+    color: #330099;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    line-height: normal;
+    line-height: 10px;
+    font-weight: bold;
+}
+
+.legendRed {
+    color: #CC0000;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    line-height: normal;
+    line-height: 10px;
+    font-weight: bold;
+}
+
+.submenu {
+    -moz-box-shadow: -3px -3px 3px #888;
+    -webkit-box-shadow: -3px -3px 3px #888;
+    box-shadow: -3px -3px 3px #888;
+    background: #BACDE6;
+}
+
+#fields {
+    border-width: 4px
+}
+
+#leg {
+    color: #666666;
+    font-family: 'Trebuchet MS';
+    font-size: 12px;
+    line-height: normal;
+    line-height: 10px;
+}
+
+/*-----------ALGUMAS FORMATAÃ‡Ã•ES ESPECIAIS PARA PRIMEFACES---------------------------*/
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+    width: 230px;
+}
+
+.ui-menubar {
+    font-size: 14px;
+}
+
+.panelGrid {
+    width: 33%;
+    border: silver 1px solid !important;
+}
+
+.even {
+    font-family: Times New Roman, serif;
+    font-size: 18px;
+    color: black;
+    background-color: white;
+    text-indent: 20px;
+}
+
+.odd {
+    font-family: Times New Roman, serif;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    text-indent: 20px;
+}
+
+.mainTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.caption1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: blue;
+}
+
+.caption2 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: red;;
+}
+
+.heading {
+    font-family: arial;
+    font-size: 12px;
+    color: black;
+    background-color: #FFC1C1;
+    text-align: center;
+}
+
+/* DefiniÃ§Ãµes CSS do primefaces ... */
+.painelteste {
+    padding: 0px;
+}
+
+.btLogin {
+    min-width: 100px;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+    height: 30px;
+}
+
+.fonte-panel {
+    font-size: 12px;
+    font-weight: bold;
+    font: arial;
+}
+
+.ui-panelgrid {
+    border: none !important;
+}
+
+.ui-datagrid-column {
+    border: none;
+}
+
+.ui-picklist .ui-picklist-source {
+    width: 420px;
+    height: 260px;
+}
+
+.ui-picklist .ui-picklist-target {
+    width: 420px;
+    height: 260px;
+}
+
+.pick .ui-picklist-source, .pick .ui-picklist-target {
+    width: 280px;
+    height: 260px;
+}
+
+.ui-picklist .ui-picklist-list {
+    list-style-type: none;
+    margin-top: 3px;
+    overflow: auto;
+    padding: 0;
+    font: bold;
+    font-size: 12px;
+    font-family: serif;
+}
+
+.ui-datagrid {
+    border: none;
+}
+
+li.ui-selectonemenu-item {
+    font-size: 12px;
+}
+
+#myDialogId.ui-panel .ui-panel-titlebar {
+    display: none !important;
+}
+
+.tabela {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-datatable-hor-scroll .ui-datatable-tablewrapper, .scrolling-div .ui-datatable-tablewrapper {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5px;
+}
+
+.yourCustomSelector .ui-datatable .ui-datatable-data tr {
+    height: 100px;
+}
+
+.process_msg .ui-dialog .ui-dialog-titlebar {
+    display: none !important;
+}
+
+/*               RODAP�                   */
+.clearfix {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+    line-height: 0;
+    height: 1%;
+    visibility: hidden;
+}
+
+.myLabel .ui-outputlable {
+    color: blue;
+}
+
+#table2 {
+    width: 100%;
+    font-size: 1em;
+}
+
+.rowGreen td {
+    background-color: rgba(91, 183, 91, 0.3);
+}
+
+.rowRed td {
+    background-color: rgba(218, 79, 73, 0.3);;
+}
+
+.body-options {
+    font-size: 62.5%;
+    width: 1178px;
+    height: 800px;
+    margin: 40px auto 10px auto;
+    padding-left: 1.315789474%;
+}
+
+.coluna {
+    height: 44.736842104%;
+    width: 23.684210526%; /* 177.5px / 760px */
+    margin-right: 1.315789474%; /*10 / 760px */
+    /*margin-left: -1.315789474%;  10 / 760px */
+    margin-bottom: 1.315789474%; /*10 / 760px */
+    margin-top: 1.315789474%; /*10 / 760px */
+    float: left;
+}
+
+.coluna:hover {
+    height: 44.736842104%;
+    width: 23.684210526%; /* 177.5px / 760px */
+    margin-right: 1.315789474%; /*10 / 760px */
+    margin-bottom: 1.315789474%; /*10 / 760px */
+    margin-top: 1.315789474%; /*10 / 760px */
+    float: left;
+    border: #4096ee 1px solid;
+}
+
+.coluna:last-child {
+    margin-right: 0;
+}
+
+.link-sistema {
+    font-size: 1.8em;
+    height: 15%;
+    width: 100%;
+    background: #4096ee;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.link-sistema:hover {
+    font-size: 1.8em;
+    height: 15%;
+    width: 100%;
+    background: #004A77;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+
+.link-sistema a {
+    color: #ffffff !important;
+}
+
+.img-sistema {
+    background: #FF6707;
+    width: 100%;
+    height: 60%;
+}
+
+.img-sistema img, picture, video, embed {
+    width: 100%;
+    height: 100%;
+}
+
+.desc-sistema {
+    font-size: 1.6em;
+    background: #F9efef;
+    width: 100%;
+    height: 25%
+}
+
+.ui-icon.pdf {
+    top: 0px;
+    left: 0px;
+    margin: 2px 0px 0px 3px;
+    background-position: 0 0 !important;
+    width: 60px;
+    height: 40px;
+    background-image: url("../imgs/pdf.png") !important;
+}
+
+@media (max-width: 1024px) {
+    .proces-colum {
+        width: auto;
+    }
+}
+
+@media (max-width: 797px) {
+    .foot-text {
+        font-size: 10.5px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerText {
+        margin-right: 10px;
+    }
+
+    .foot-text {
+        font-size: 10.5px !important;
+    }
+}
+
+@media (min-width: 568px) and (max-width: 812px) {
+    #container {
+
+    }
+
+    .nova-consul {
+        margin-bottom: 50px;
+    }
+
+
+    #foot {
+        position: fixed;
+        height: 32px;
+    }
+
+    .foot-text {
+        padding-top: 2px !important;;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 765px) {
+    .foot-text {
+        margin-top: 3px !important;
+        font-size: 9.3px !important;
+        line-height: 150% !important;
+        padding-top: 8px;
+    }
+}
+
+@media (max-width: 414px) {
+
+    .headerText {
+        font-size: 11px;
+    }
+
+    .logo-text-subtitulo {
+        font-size: 16px;
+        line-height: 125%;
+        margin-top: -10px;
+    }
+
+    #foot {
+        position: fixed;
+        height: 32px;
+    }
+
+    .foot-text {
+        margin-top: 3px !important;
+        font-size: 9.4px !important;
+        line-height: 135% !important;
+        padding-top: 4px;
+    }
+}
+
+@media (max-width: 411px) {
+    #foot {
+        height: 40px;
+    }
+
+    .foot-text {
+        font-size: 9px !important;
+        padding-top: 0px;
+        line-height: 145% !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .logo-text-subtitulo {
+        line-height: 120%;
+    }
+
+    .textBottom {
+        padding-top: 8px;
+    }
+
+    .foot-text {
+        margin-top: 7px !important;
+        font-size: 8.2px !important;
+        line-height: 135% !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .headerText {
+        font-size: 9px;
+    }
+
+    .logo-text-subtitulo {
+        font-size: 15px;
+    }
+
+    .textBottom {
+        padding-top: 6px;
+    }
+
+    .foot-text {
+        font-size: 7.8px !important;
+        line-height: 155% !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .headerText {
+        font-size: 8px;
+        margin-top: -45px;
+        margin-right: 5px;
+    }
+
+    .logo-text-subtitulo {
+        font-size: 13px;
+        line-height: 131%;
+    }
+
+    .textBottom {
+        padding-top: 0px;
+    }
+
+    .foot-text {
+        margin-top: 8px !important;
+        font-size: 6.7px !important;
+        line-height: 175% !important;
+    }
+}
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <ui:insert name="title">
+        <title>Projeto Base</title>
+    </ui:insert>
+
+    <link rel="StyleSheet" type="text/css" href="../css/estilo.css"/>
+    <link rel="StyleSheet" type="text/css" href="../css/bootstrap.css"/>
+</h:head>
+
+<h:body style="background-color: #dbd9f0; ">
+    <h:form id="formNavBar">
+        <b:navBar brand="Projeto JSF" style="background-color: #8db2d1; width: 100%; color: red">
+            <b:navbarLinks pull="right">
+                <b:navLink value="Home" href="./../pages/home.faces"
+                           style="font-weight: #{usuarioMB.logado ? 'normal':'1000'}"/>
+                <b:navLink value="Cadastro Imobiliário" href="./../pages/cadastroImobiliario.faces"
+                           rendered="#{usuarioMB.logado}"/>
+                <b:navLink value="Unidades Federativas" href="./../pages/unidadeFederativa.faces"
+                           rendered="#{usuarioMB.logado}"/>
+                <b:navLink value="Tipo Logradouro" href="./../pages/tipoLogradouro.faces"
+                           rendered="#{usuarioMB.logado}"/>
+
+                <b:navLink value="Entre ou Cadastre-se" rendered="#{!usuarioMB.logado}"
+                           onclick="PF('dlgLogin').show()" update="formDlgLogin">
+                    <f:ajax listener="#{usuarioMB.limparMensagem()}"/>
+                </b:navLink>
+
+                <a class="nav-link" style="color: white!important; font-weight: bold; position: relative;
+                    top: 13px; left: 22px; font-size: 18px; display: #{!usuarioMB.logado ? 'none' : 'initial'}">Olá, #{usuarioMB.nomeUsuarioLogado}</a>
+
+                <b:navLink value="Sair" rendered="#{usuarioMB.logado}" update="formNavBar">
+                    <f:ajax listener="#{usuarioMB.destruirSessao()}"/>
+                </b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+    </h:form>
+
+    <div id="container" align="center">
+        <ui:include src="./dialogs/dialogLogin.xhtml"/>
+        <ui:include src="./dialogs/dialogCadastrarUsuario.xhtml"/>
+        <ui:include src="./dialogs/dialogCadastrarImobiliario.xhtml"/>
+        <ui:include src="./dialogs/dialogCarregar.xhtml"/>
+        <ui:insert name="body"/>
+    </div>
+</h:body>
+</html>

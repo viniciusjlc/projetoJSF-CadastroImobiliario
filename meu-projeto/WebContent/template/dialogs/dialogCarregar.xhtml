@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//PT-BR"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+    <p:ajaxStatus onstart="PF('statusDialog').show();"
+                  onsuccess="PF('statusDialog').hide();"/>
+
+    <p:dialog header="Carregando..." position="center" resizable="false"
+              modal="true" closable="false"
+              widgetVar="statusDialog" styleClass="dlg-loading">
+        <div align="center">
+            <p:graphicImage
+                    value="#{FacesContext.getCurrentInstance().getExternalContext()}/imgs/ajax_loading_bar.gif"/>
+        </div>
+    </p:dialog>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition template="/template/templategeral.xhtml">
+    <ui:define name="body">
+        <h3 style="color: #365e7d">
+            Listagem de Unidades Federativas
+        </h3>
+        <h:form>
+            <p:dataTable var="uf" value="#{unidadeFederativaMB.listaUnidadeFederativas}" style="width: 80%"
+                         emptyMessage="Nenhum registro encontrado">
+                <p:column filterBy="#{uf.nome}" headerText="Nome"
+                          filterMatchMode="contains" sortBy="#{uf.nome}">
+                    <p:outputLabel value="#{uf.nome}"/>
+                </p:column>
+                <p:column filterBy="#{uf.sigla}" headerText="Sigla"
+                          filterMatchMode="contains" sortBy="#{uf.sigla}">
+                    <p:outputLabel value="#{uf.sigla}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
