@@ -10,7 +10,7 @@
         </h3>
         <h:form>
             <p:dataTable var="uf" value="#{unidadeFederativaMB.listaUnidadeFederativas}" style="width: 80%"
-                         emptyMessage="Nenhum registro encontrado">
+                         emptyMessage="Nenhum registro encontrado" paginator="true" paginatorPosition="bottom">
                 <p:column filterBy="#{uf.nome}" headerText="Nome"
                           filterMatchMode="contains" sortBy="#{uf.nome}">
                     <p:outputLabel value="#{uf.nome}"/>

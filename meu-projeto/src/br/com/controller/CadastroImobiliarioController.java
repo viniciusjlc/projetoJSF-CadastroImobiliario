@@ -9,13 +9,18 @@ import br.com.service.UnidadeFederativaService;
 import br.com.util.SessionUtil;
 import net.bootsfaces.component.message.Message;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static br.com.util.JSFUtil.fecharDialog;
+import static br.com.util.StringUtil.putMascara;
+import static br.com.util.StringUtil.retirarMascara;
 
 @ViewScoped
 @ManagedBean(name = "cadastroImobiliarioMB")
@@ -48,10 +53,12 @@ public class CadastroImobiliarioController implements Serializable {
 
     public void salvarCadastroImobiliario() {
         if (!verificarSeValoresDoCadastroPreenchidos()) {
+            this.cadastroImobiliario.setCep(retirarMascara(this.cadastroImobiliario.getCep()));
             this.cadastroImobiliario.getUsuario().setId(SessionUtil.getInstance().getUserSession().getId());
             this.cadastroImobiliarioService.cadastrar(this.cadastroImobiliario);
             this.listarCadatrosPorUsuarioAtual();
             fecharDialog("dlgCadastroImobiliario");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Confirmado", "Cadastro imobiliario salvo com sucesso."));
         } else {
             this.mensagemDeErroCadastrar = "Todos os valores devem ser preenchidos!";
         }
@@ -60,6 +67,7 @@ public class CadastroImobiliarioController implements Serializable {
     public void deletarCadastroImobiliario(CadastroImobiliario cadastroImobiliario) {
         this.cadastroImobiliarioService.excluir(cadastroImobiliario.getId());
         this.listarCadatrosPorUsuarioAtual();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Confirmado", "Cadastro excluido com sucesso."));
     }
 
 
@@ -82,9 +90,28 @@ public class CadastroImobiliarioController implements Serializable {
         this.cadastroImobiliario = new CadastroImobiliario("", "", "", "", "", "");
     }
 
+    public String retornarCEP(String cep) {
+        return putMascara(cep, "#####-###");
+    }
+
     private void listarCadatrosPorUsuarioAtual() {
         this.listaCadastrosImobiliario = cadastroImobiliarioService.consultarImobiliarioPorUsuario(SessionUtil.getInstance().getUserSession().getId());
     }
+
+    public boolean globalFilterFunction(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim().toLowerCase();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+
+        CadastroImobiliario ci = (CadastroImobiliario) value;
+        return ci.getCep().toLowerCase().contains(filterText)
+                || ci.getEndereco().toLowerCase().contains(filterText)
+                || ci.getUnidadeFederativa().getNome().toLowerCase().contains(filterText)
+                || ci.getCidade().toLowerCase().contains(filterText)
+                || ci.getTipoLogradouro().getDescricao().toLowerCase().contains(filterText);
+    }
+
 
     public List<CadastroImobiliario> getListaCadastrosImobiliario() {
         return listaCadastrosImobiliario;

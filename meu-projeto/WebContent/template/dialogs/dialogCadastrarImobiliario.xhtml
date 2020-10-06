@@ -15,11 +15,10 @@
             <strong>Alerta! </strong>
             <p:outputLabel value="#{cadastroImobiliarioMB.mensagemDeErroCadastrar}"/>
         </b:alert>
-        <p:growl id="msgDlgCadastroImobiliario"/>
         <div class="ui-g">
             <div class="ui-g-6">
                 <p:outputLabel value="Cep:" style="float:left !important; text-align: left !important;"/>
-                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.cep}"
+                <p:inputMask  value="#{cadastroImobiliarioMB.cadastroImobiliario.cep}" mask="99999-999"
                              style="float:left !important; text-align: left !important; width: 100%;"/>
             </div>
             <div class="ui-g-6">
@@ -34,21 +33,21 @@
             <div class="ui-g-12">
                 <p:outputLabel value="Endereço:" style="float:left !important; text-align: left !important;"/>
                 <p:inputTextarea value="#{cadastroImobiliarioMB.cadastroImobiliario.endereco}" rows="3" cols="15"
-                                 style="float:left !important; text-align: left !important; width: 100%;"/>
+                                 style="float:left !important; text-align: left !important; width: 100%;" maxlength="1000"/>
             </div>
             <div class="ui-g-12">
                 <p:outputLabel value="Complemento:" style="float:left !important; text-align: left !important;"/>
                 <p:inputTextarea value="#{cadastroImobiliarioMB.cadastroImobiliario.complemento}" rows="3" cols="15"
-                                 style="float:left !important; text-align: left !important; width: 100%;"/>
+                                 style="float:left !important; text-align: left !important; width: 100%;" maxlength="1000"/>
             </div>
             <div class="ui-g-6">
                 <p:outputLabel value="Numero:" style="float:left !important; text-align: left !important;"/>
-                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.numero}"
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.numero}"  maxlength="100"
                              style="float:left !important; text-align: left !important; width: 100%;"/>
             </div>
             <div class="ui-g-6">
                 <p:outputLabel value="Bairro:" style="float:left !important; text-align: left !important;"/>
-                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.bairro}"
+                <p:inputText value="#{cadastroImobiliarioMB.cadastroImobiliario.bairro}"  maxlength="500"
                              style="float:left !important; text-align: left !important; width: 100%;"/>
             </div>
             <div class="ui-g-6">
@@ -66,7 +65,7 @@
                              style="float:left !important; text-align: left !important; width: 100%;"/>
             </div>
             <div class="ui-g-12">
-                <b:commandButton value="Cadastrar" look="success" update="formDlgCadastroImobiliario, form-cadastroImobiliario" oncomplete=""
+                <b:commandButton value="Salvar" look="success" update="formDlgCadastroImobiliario, form-cadastroImobiliario" oncomplete=""
                                  actionListener="#{cadastroImobiliarioMB.salvarCadastroImobiliario()}" style="width: 100%;"/>
             </div>
         </div>

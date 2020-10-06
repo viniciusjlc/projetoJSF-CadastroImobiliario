@@ -10,14 +10,16 @@
             Listagem de Cadastros Imobiliário
         </h3>
         <h:form id="form-cadastroImobiliario">
+            <p:messages style="width: 80%" id="messages" showDetail="true" closable="true"/>
             <div style="width: 80%;" align="center">
                 <p:commandButton value="Cadastrar" icon="pi pi-plus"
                                  style="float:left"
                                  onclick="PF('dlgCadastroImobiliario').show()"/>
-                <p:dataTable widgetVar="tabela-cadastroImobiliario"
+                <p:dataTable widgetVar="tabela-cadastroImobiliario" rows="10" paginator="true"
+                             paginatorPosition="bottom" var="cadastroImobiliario"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
-                             var="cadastroImobiliario" value="#{cadastroImobiliarioMB.listaCadastrosImobiliario}"
+                             value="#{cadastroImobiliarioMB.listaCadastrosImobiliario}"
                              emptyMessage="Nenhum registro encontrado">
                     <f:facet name="header">
                         <p:outputPanel>
@@ -25,17 +27,21 @@
                                          style="width:100%" placeholder="Buscar"/>
                         </p:outputPanel>
                     </f:facet>
-                    <p:column headerText="Descrição" sortBy="#{cadastroImobiliario.cep}">
-                        <p:outputLabel value="#{cadastroImobiliario.cep}"/>
+                    <p:column headerText="CEP" sortBy="#{cadastroImobiliario.cep}" filterStyle="display: none"
+                              filterBy="#{cadastroImobiliario.cep}" filterMatchMode="contains">
+                        <p:outputLabel value="#{cadastroImobiliarioMB.retornarCEP(cadastroImobiliario.cep)}"/>
                     </p:column>
-                    <p:column headerText="Endereço" sortBy="#{cadastroImobiliario.endereco}">
+                    <p:column headerText="Endereço" filterBy="#{cadastroImobiliario.endereco}" filterStyle="display: none"
+                              sortBy="#{cadastroImobiliario.endereco}" filterMatchMode="contains">
                         <p:outputLabel
                                 value="#{cadastroImobiliario.tipoLogradouro.descricao} #{cadastroImobiliario.endereco} #{cadastroImobiliario.bairro}, #{cadastroImobiliario.complemento}"/>
                     </p:column>
-                    <p:column headerText="Estado" sortBy="#{cadastroImobiliario.unidadeFederativa.nome}">
+                    <p:column headerText="Estado" filterBy="#{cadastroImobiliario.unidadeFederativa.nome}" filterStyle="display: none"
+                              sortBy="#{cadastroImobiliario.unidadeFederativa.nome}" filterMatchMode="contains">
                         <p:outputLabel value="#{cadastroImobiliario.unidadeFederativa.nome}"/>
                     </p:column>
-                    <p:column headerText="Cidade" sortBy="#{cadastroImobiliario.cidade}">
+                    <p:column headerText="Cidade" filterBy="#{cadastroImobiliario.cidade}" filterStyle="display: none"
+                              sortBy="#{cadastroImobiliario.cidade}" filterMatchMode="contains">
                         <p:outputLabel value="#{cadastroImobiliario.cidade}"/>
                     </p:column>
                     <p:column headerText="Ações">
@@ -49,7 +55,11 @@
                             <p:commandButton
                                     action="#{cadastroImobiliarioMB.deletarCadastroImobiliario(cadastroImobiliario)}"
                                     update="form-cadastroImobiliario" icon="pi pi-trash" title="Excluir"
-                                    style="font-size: 150%;"/>
+                                    style="font-size: 150%;">
+                                <p:confirm header="Confirmação"
+                                           message="Deseja excluir o cadastro cep #{cadastroImobiliarioMB.retornarCEP(cadastroImobiliario.cep)}?"
+                                           icon="pi pi-exclamation-triangle"/>
+                            </p:commandButton>
                         </div>
                     </p:column>
                 </p:dataTable>

@@ -3,19 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
     <ui:insert name="title">
         <title>Projeto Base</title>
     </ui:insert>
-
     <link rel="StyleSheet" type="text/css" href="../css/estilo.css"/>
     <link rel="StyleSheet" type="text/css" href="../css/bootstrap.css"/>
 </h:head>
 
-<h:body style="background-color: #dbd9f0; ">
+<h:body style="background-color: #dbd9f0;">
     <h:form id="formNavBar">
         <b:navBar brand="Projeto JSF" style="background-color: #8db2d1; width: 100%; color: red">
             <b:navbarLinks pull="right">
@@ -36,14 +35,23 @@
                 <a class="nav-link" style="color: white!important; font-weight: bold; position: relative;
                     top: 13px; left: 22px; font-size: 18px; display: #{!usuarioMB.logado ? 'none' : 'initial'}">Olá, #{usuarioMB.nomeUsuarioLogado}</a>
 
-                <b:navLink value="Sair" rendered="#{usuarioMB.logado}" update="formNavBar">
+                <b:navLink value="Sair" rendered="#{usuarioMB.logado}" href="./../pages/home.faces">
                     <f:ajax listener="#{usuarioMB.destruirSessao()}"/>
                 </b:navLink>
             </b:navbarLinks>
         </b:navBar>
     </h:form>
 
-    <div id="container" align="center">
+    <h:form id="form-confirmDialog">
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+            <div align="center">
+                <p:commandButton value="Confirmar" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+            </div>
+        </p:confirmDialog>
+    </h:form>
+
+    <div id="container" align="center" style="background-color: #dbd9f0;">
         <ui:include src="./dialogs/dialogLogin.xhtml"/>
         <ui:include src="./dialogs/dialogCadastrarUsuario.xhtml"/>
         <ui:include src="./dialogs/dialogCadastrarImobiliario.xhtml"/>
