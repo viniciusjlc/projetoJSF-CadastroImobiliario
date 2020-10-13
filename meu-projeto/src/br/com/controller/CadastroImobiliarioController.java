@@ -21,6 +21,7 @@ import java.util.Locale;
 import static br.com.util.JSFUtil.fecharDialog;
 import static br.com.util.StringUtil.putMascara;
 import static br.com.util.StringUtil.retirarMascara;
+import static br.com.util.VerificadorUtil.estaNulo;
 
 @ViewScoped
 @ManagedBean(name = "cadastroImobiliarioMB")
@@ -95,7 +96,7 @@ public class CadastroImobiliarioController implements Serializable {
     }
 
     private void listarCadatrosPorUsuarioAtual() {
-        this.listaCadastrosImobiliario = cadastroImobiliarioService.consultarImobiliarioPorUsuario(SessionUtil.getInstance().getUserSession().getId());
+        this.listaCadastrosImobiliario = cadastroImobiliarioService.consultarImobiliarioPorUsuario(estaNulo(SessionUtil.getInstance().getUserSession().getId()) ? 1 : SessionUtil.getInstance().getUserSession().getId());
     }
 
     public boolean globalFilterFunction(Object value, Object filter, Locale locale) {

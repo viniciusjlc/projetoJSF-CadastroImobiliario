@@ -1,6 +1,5 @@
 package br.com.util;
 
-import br.com.model.Usuario;
 import br.com.shared.dto.TokenDTO;
 import br.com.util.API.ClienteRestException;
 import br.com.util.API.RestTemplateErrorHandler;
@@ -21,8 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static br.com.shared.constantes.Constantes.urlApi.usuario.urlAutenticar;
-
 public class JWTUtil {
     private String token;
     private static JWTUtil instance;
@@ -42,6 +39,7 @@ public class JWTUtil {
     }
 
     public <T> T chamarMetodoPost(String url, Object parametros, Class<T> classType) {
+        System.out.println("metodo post: " + url);
         try {
             HttpEntity<?> body = new HttpEntity(parametros, obterHeaders());
             return getClient().exchange(url, HttpMethod.POST, body, classType, new Object[0]).getBody();
@@ -51,6 +49,7 @@ public class JWTUtil {
     }
 
     public <T> List<T> chamarMetodoPostListagem(String url, Object parametros, Class<T[]> listType) {
+        System.out.println("metodo post list: " + url);
         try {
             HttpEntity<?> body = new HttpEntity(parametros, obterHeaders());
             ResponseEntity<T[]> response = getClient().exchange(url, HttpMethod.POST, body, listType, new Object[0]);
@@ -61,6 +60,7 @@ public class JWTUtil {
     }
 
     public <T> T chamarMetodoGet(String url, Class<T> classType) {
+        System.out.println("metodo get: " + url);
         try {
             HttpEntity<?> body = new HttpEntity(obterHeaders());
             return getClient().exchange(url, HttpMethod.GET, body, classType, new Object[0]).getBody();
@@ -70,6 +70,7 @@ public class JWTUtil {
     }
 
     public <T> List<T> chamarMetodoGetListagem(String url, Class<T[]> listType) {
+        System.out.println("metodo get list: " + url);
         try {
             HttpEntity<?> body = new HttpEntity(obterHeaders());
             ResponseEntity<T[]> response = getClient().exchange(url, HttpMethod.GET, body, listType, new Object[0]);
