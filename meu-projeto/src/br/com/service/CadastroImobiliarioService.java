@@ -1,26 +1,29 @@
 package br.com.service;
 
+import br.com.DAO.CadastroImobiliarioDAO;
 import br.com.model.CadastroImobiliario;
-import br.com.util.JWTUtil;
 
 import java.util.List;
 
-import static br.com.shared.constantes.Constantes.urlApi.cadatroImobiliario.*;
-
 public class CadastroImobiliarioService {
-    public List<CadastroImobiliario> listar() {
-        return JWTUtil.getInstance().chamarMetodoGetListagem(urlListarCadastroImobiliario, CadastroImobiliario[].class);
-    }
+    private CadastroImobiliarioDAO cadastroImobiliarioDAO;
 
+    public CadastroImobiliarioService() {
+        this.cadastroImobiliarioDAO = new CadastroImobiliarioDAO();
+    }
     public List<CadastroImobiliario> consultarImobiliarioPorUsuario(Integer idUsuario) {
-        return JWTUtil.getInstance().chamarMetodoGetListagem(urlConsultarCadastroImobiliarioPorUsuario + idUsuario, CadastroImobiliario[].class);
+        return cadastroImobiliarioDAO.consultarImobiliarioPorUsuario(idUsuario);
     }
 
-    public CadastroImobiliario cadastrar(CadastroImobiliario cadastroImobiliario) {
-        return JWTUtil.getInstance().chamarMetodoPost(urlSalvarCadastroImobiliario, cadastroImobiliario, CadastroImobiliario.class);
+    public void cadastrarAlterar(CadastroImobiliario cadastroImobiliario) {
+        if (cadastroImobiliario.getId() != null) {
+            cadastroImobiliarioDAO.cadastrar(cadastroImobiliario);
+        } else {
+            cadastroImobiliarioDAO.alterar(cadastroImobiliario);
+        }
     }
 
-    public CadastroImobiliario excluir(Integer idCadastroImobiliario) {
-        return JWTUtil.getInstance().chamarMetodoDelete(urlExcluirCadastroImobiliario + idCadastroImobiliario, CadastroImobiliario.class);
+    public void excluir(Integer idCadastroImobiliario) {
+        cadastroImobiliarioDAO.excluir(idCadastroImobiliario);
     }
 }

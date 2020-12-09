@@ -219,6 +219,21 @@
             <artifactId>tomcat-util</artifactId>
             <version>8.0.0-RC1</version>
         </dependency>
+        <dependency>
+            <groupId>br.gov.al.maceio</groupId>
+            <artifactId>framework-semge</artifactId>
+            <version>1.6.3-202009150931</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bctsp-jdk14</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk15on</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>src</sourceDirectory>

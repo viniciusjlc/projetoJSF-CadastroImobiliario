@@ -56,7 +56,7 @@ public class CadastroImobiliarioController implements Serializable {
         if (!verificarSeValoresDoCadastroPreenchidos()) {
             this.cadastroImobiliario.setCep(retirarMascara(this.cadastroImobiliario.getCep()));
             this.cadastroImobiliario.getUsuario().setId(SessionUtil.getInstance().getUserSession().getId());
-            this.cadastroImobiliarioService.cadastrar(this.cadastroImobiliario);
+            this.cadastroImobiliarioService.cadastrarAlterar(this.cadastroImobiliario);
             this.listarCadatrosPorUsuarioAtual();
             fecharDialog("dlgCadastroImobiliario");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Confirmado", "Cadastro imobiliario salvo com sucesso."));

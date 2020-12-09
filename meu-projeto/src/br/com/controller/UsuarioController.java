@@ -26,7 +26,6 @@ public class UsuarioController implements Serializable {
     public UsuarioController() {
         this.usuarioService = new UsuarioService();
         this.usuarioLogin = new Usuario("teste@teste.com", "teste", "teste");
-        this.logar();
         this.usuarioCadastro = new Usuario("", "", "");
         this.mensagemErroLogin = null;
         this.confirmacaoSenha = null;
