@@ -51,7 +51,7 @@ public class UsuarioController implements Serializable {
             Boolean logado = this.usuarioService.autenticar(usuarioLogin);
             if (logado) {
                 fecharDialog("dlgLogin");
-                JSFUtil.atualizarComponente("formNavBar");
+                SessionUtil.getInstance().gravarUsuario(this.usuarioService.consultarPorEmail(usuarioLogin));
             } else {
                 this.mensagemErroLogin = "Email ou Senha incorretos!";
             }
@@ -67,6 +67,7 @@ public class UsuarioController implements Serializable {
         } else {
             Boolean retorno = this.usuarioService.cadastrar(usuarioCadastro);
             if (retorno) {
+                SessionUtil.getInstance().gravarUsuario(this.usuarioService.consultarPorEmail(usuarioCadastro));
                 fecharDialog("dlgLogin");
                 fecharDialog("dlgCadastrarUsuario");
             } else {

@@ -16,7 +16,7 @@ public class CadastroImobiliarioService {
     }
 
     public void cadastrarAlterar(CadastroImobiliario cadastroImobiliario) {
-        if (cadastroImobiliario.getId() != null) {
+        if (cadastroImobiliario.getId() == null) {
             cadastroImobiliarioDAO.cadastrar(cadastroImobiliario);
         } else {
             cadastroImobiliarioDAO.alterar(cadastroImobiliario);

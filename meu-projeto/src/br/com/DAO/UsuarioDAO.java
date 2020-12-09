@@ -43,7 +43,9 @@ public class UsuarioDAO {
             ps.setString(1, usuario.getEmail());
             ps.setString(2, usuario.getNome());
             ps.setString(3, usuario.getSenha());
-            return ps.execute();
+            ps.execute();
+            conexao.commit();
+            return true;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -56,7 +58,7 @@ public class UsuarioDAO {
     }
 
     public Usuario consultarPorEmail(Usuario usuario) {
-        String sql = "select id, email, senha " +
+        String sql = "select id, email, senha, nome " +
                 "from imobiliario.usuarios u " +
                 "where u.email = ? ";
         Connection conexao = ConnectionFactory.getConnection();

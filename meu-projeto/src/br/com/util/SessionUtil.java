@@ -35,4 +35,5 @@ public class SessionUtil {
         this.userSession = usuario;
         this.isLogado = true;
     }
+
 }

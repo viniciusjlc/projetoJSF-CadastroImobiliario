@@ -16,6 +16,9 @@ public class CadastroImobiliario implements Serializable {
     private Usuario usuario;
 
     public CadastroImobiliario() {
+        this.tipoLogradouro = new TipoLogradouro();
+        this.unidadeFederativa = new UnidadeFederativa();
+        this.usuario = new Usuario();
     }
 
     public CadastroImobiliario(String cep, String endereco, String complemento, String numero, String bairro, String cidade) {

@@ -34,7 +34,7 @@ public class CadastroImobiliarioDAO {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, idUsuario);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 CadastroImobiliario c = new CadastroImobiliario();
                 c.setId(rs.getInt("id"));
                 c.setCep(rs.getString("cep"));
@@ -46,6 +46,7 @@ public class CadastroImobiliarioDAO {
                 c.getTipoLogradouro().setDescricao(rs.getString("descricao_tipo_logradouro"));
                 c.getUnidadeFederativa().setNome(rs.getString("nome_unidade_federativa"));
                 c.getUnidadeFederativa().setSigla(rs.getString("sigla_unidade_federativa"));
+                c.getUsuario().setId(idUsuario);
                 listaCadastroImobiliario.add(c);
             }
             return listaCadastroImobiliario;
@@ -65,8 +66,7 @@ public class CadastroImobiliarioDAO {
                 "(cep, endereco, complemento, " +
                 "id_tipo_logradouro, numero, bairro, " +
                 "cidade, id_unidade_federativa, id_usuario) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) " +
-                "returning id";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         Connection conexao = ConnectionFactory.getConnection();
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -74,15 +74,13 @@ public class CadastroImobiliarioDAO {
             ps.setString(2, cadastroImobiliario.getEndereco());
             ps.setString(3, cadastroImobiliario.getComplemento());
             ps.setInt(4, cadastroImobiliario.getTipoLogradouro().getId());
-            ps.setString(5, cadastroImobiliario.getBairro());
+            ps.setString(5, cadastroImobiliario.getNumero());
             ps.setString(6, cadastroImobiliario.getBairro());
             ps.setString(7, cadastroImobiliario.getCidade());
             ps.setInt(8, cadastroImobiliario.getUnidadeFederativa().getId());
             ps.setInt(9, cadastroImobiliario.getUsuario().getId());
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                cadastroImobiliario.setId(rs.getInt("id"));
-            }
+            ps.execute();
+            conexao.commit();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -103,7 +101,7 @@ public class CadastroImobiliarioDAO {
                 "    numero=?, " +
                 "    bairro=?, " +
                 "    cidade=?, " +
-                "    id_unidade_federativa=?, " +
+                "    id_unidade_federativa=? " +
                 "WHERE id = ?";
         Connection conexao = ConnectionFactory.getConnection();
         try {
@@ -118,6 +116,7 @@ public class CadastroImobiliarioDAO {
             ps.setInt(8, cadastroImobiliario.getUnidadeFederativa().getId());
             ps.setInt(9, cadastroImobiliario.getId());
             ps.executeUpdate();
+            conexao.commit();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -137,6 +136,7 @@ public class CadastroImobiliarioDAO {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, idCadastroImobiliario);
             ps.execute();
+            conexao.commit();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } finally {

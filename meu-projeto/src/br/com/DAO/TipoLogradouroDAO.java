@@ -20,7 +20,7 @@ public class TipoLogradouroDAO {
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 TipoLogradouro tl = new TipoLogradouro();
                 tl.setId(rs.getInt("id"));
                 tl.setDescricao(rs.getString("descricao"));
