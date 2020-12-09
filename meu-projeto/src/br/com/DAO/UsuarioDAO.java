@@ -13,7 +13,7 @@ public class UsuarioDAO {
     public Boolean autenticar(Usuario usuario) {
         String sql = "select id " +
                 "from imobiliario.usuarios u " +
-                "where u.email = ? " +
+                "where u.email ilike ? " +
                 "and u.senha = ?";
         Connection conexao = ConnectionFactory.getConnection();
         try {

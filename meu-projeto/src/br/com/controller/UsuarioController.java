@@ -2,6 +2,7 @@ package br.com.controller;
 
 import br.com.model.Usuario;
 import br.com.service.UsuarioService;
+import br.com.util.JSFUtil;
 import br.com.util.SessionUtil;
 
 import javax.faces.bean.ManagedBean;
@@ -50,6 +51,7 @@ public class UsuarioController implements Serializable {
             Boolean logado = this.usuarioService.autenticar(usuarioLogin);
             if (logado) {
                 fecharDialog("dlgLogin");
+                JSFUtil.atualizarComponente("formNavBar");
             } else {
                 this.mensagemErroLogin = "Email ou Senha incorretos!";
             }

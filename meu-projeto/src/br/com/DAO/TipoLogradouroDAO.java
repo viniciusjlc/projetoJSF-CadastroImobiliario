@@ -41,7 +41,7 @@ public class TipoLogradouroDAO {
     /*public List<TipoLogradouro> listar() {
         List<TipoLogradouro> listaTipoLogradouro = new ArrayList<>();
         try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement preparedStatement = criarPreparedStatement(connection, "")
+             PreparedStatement preparedStatement = criarPreparedStatement(connection, QUERY_CONSULTA_LISTAR_TIPO_LOGRADOURO)
                      .construir();
              ResultSet resultSet = preparedStatement.executeQuery();
         ) {
