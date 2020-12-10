@@ -12,8 +12,8 @@
         <h:form id="form-cadastroImobiliario">
             <p:messages style="width: 80%" id="messages" showDetail="true" closable="true"/>
             <div style="width: 80%;" align="center">
-                <p:commandButton value="Cadastrar" icon="pi pi-plus"
-                                 style="float:left"
+                <p:commandButton value="Cadastrar" icon="pi pi-plus" update="formDlgCadastroImobiliario"
+                                 style="float:left" actionListener="#{cadastroImobiliarioMB.limparCadastroImobiliario()}"
                                  onclick="PF('dlgCadastroImobiliario').show()"/>
                 <p:dataTable widgetVar="tabela-cadastroImobiliario" rows="10" paginator="true"
                              paginatorPosition="bottom" var="cadastroImobiliario"

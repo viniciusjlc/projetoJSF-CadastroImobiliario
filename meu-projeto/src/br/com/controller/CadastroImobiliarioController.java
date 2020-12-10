@@ -6,6 +6,7 @@ import br.com.model.UnidadeFederativa;
 import br.com.service.CadastroImobiliarioService;
 import br.com.service.TipoLogradouroService;
 import br.com.service.UnidadeFederativaService;
+import br.com.util.JSFUtil;
 import br.com.util.SessionUtil;
 import net.bootsfaces.component.message.Message;
 
@@ -13,6 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +73,10 @@ public class CadastroImobiliarioController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Confirmado", "Cadastro excluido com sucesso."));
     }
 
+    public void limparCadastroImobiliario() {
+        this.cadastroImobiliario = new CadastroImobiliario();
+        JSFUtil.atualizarComponente("formDlgCadastroImobiliario");
+    }
 
     public void abrirEditarCadastroImobiliario(CadastroImobiliario cadastroImobiliario) {
         this.cadastroImobiliario = cadastroImobiliario;
@@ -193,4 +199,5 @@ public class CadastroImobiliarioController implements Serializable {
     public void setMensagens(List<Message> mensagens) {
         this.mensagens = mensagens;
     }
+
 }

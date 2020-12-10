@@ -22,8 +22,10 @@ public class CadastroImobiliarioDAO {
                 "       ci.bairro, " +
                 "       ci.cidade, " +
                 "       tl.descricao as descricao_tipo_logradouro, " +
+                "       tl.id        as id_tipo_logradouro, " +
                 "       uf.nome      as nome_unidade_federativa, " +
-                "       uf.sigla      as sigla_unidade_federativa " +
+                "       uf.sigla     as sigla_unidade_federativa, " +
+                "       uf.id        as id_unidade_federativa " +
                 "from imobiliario.cadastro_imobiliario ci " +
                 "         join imobiliario.tipo_logradouro tl on tl.id = ci.id_tipo_logradouro " +
                 "         join imobiliario.unidade_federativa uf on uf.id = ci.id_unidade_federativa " +
@@ -44,8 +46,10 @@ public class CadastroImobiliarioDAO {
                 c.setBairro(rs.getString("bairro"));
                 c.setCidade(rs.getString("cidade"));
                 c.getTipoLogradouro().setDescricao(rs.getString("descricao_tipo_logradouro"));
+                c.getTipoLogradouro().setId(rs.getInt("id_tipo_logradouro"));
                 c.getUnidadeFederativa().setNome(rs.getString("nome_unidade_federativa"));
                 c.getUnidadeFederativa().setSigla(rs.getString("sigla_unidade_federativa"));
+                c.getUnidadeFederativa().setId(rs.getInt("id_unidade_federativa"));
                 c.getUsuario().setId(idUsuario);
                 listaCadastroImobiliario.add(c);
             }
